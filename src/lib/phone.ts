@@ -6,7 +6,7 @@ export const toE164 = (phone: string) =>
 // Maps raw Supabase auth errors to short, human messages.
 export function friendlyPhoneError(raw: string): string {
   const m = raw.toLowerCase();
-  if (m.includes("provider is disabled") || m.includes("unsupported_provider") || m.includes("sms provider") && m.includes("not")) {
+  if (m.includes("provider is disabled") || m.includes("unsupported phone provider") || m.includes("unsupported_provider") || m.includes("phone_provider_disabled")) {
     return "Phone sign-in isn't switched on for this app yet. Please contact the Beez team to enable it.";
   }
   if (m.includes("sms could not be sent") || m.includes("sms_not_sent") || m.includes("failed to send")) {
