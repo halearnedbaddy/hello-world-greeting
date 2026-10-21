@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 import { Shell, PhoneStep, OtpStep } from "@/components/onboarding";
@@ -54,6 +54,10 @@ function Login() {
       ) : (
         <OtpStep title="Enter the 6-digit code" phone={phone} onNext={enter} cta="Verify & Continue" />
       )}
+      <p className="mt-8 text-center text-sm text-muted-foreground">
+        New to Beez?{" "}
+        <Link to="/get-started" className="font-semibold text-primary">Create an account</Link>
+      </p>
       {busy && <p className="mt-6 text-center text-sm text-muted-foreground">Opening your dashboard…</p>}
     </Shell>
   );

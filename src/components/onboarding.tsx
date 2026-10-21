@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
+import { friendlyPhoneError, toE164 } from "@/lib/phone";
+export { toE164 } from "@/lib/phone";
 import { ArrowLeft, ArrowRight, ShieldCheck, Check } from "lucide-react";
 
 export function Shell({ onBack, children, step, total }: { onBack?: (() => void) | undefined; children: ReactNode; step?: number; total?: number }) {
@@ -57,7 +59,6 @@ export function Field({ label, children }: { label: string; children: ReactNode 
 
 export const inputCls = "w-full rounded-xl border border-input bg-card px-4 py-3.5 outline-none focus:border-primary";
 
-export const toE164 = (phone: string) => `+254${phone.replace(/\D/g, "").replace(/^0+/, "").replace(/^254/, "")}`;
 
 export function PhoneStep({ title, desc, phone, setPhone, onNext, cta = "Continue", extra }: {
   title: string; desc: string; phone: string; setPhone: (v: string) => void; onNext: () => void; cta?: string; extra?: ReactNode;
@@ -69,7 +70,7 @@ export function PhoneStep({ title, desc, phone, setPhone, onNext, cta = "Continu
     setBusy(true); setErr("");
     const { error } = await supabase.auth.signInWithOtp({ phone: toE164(phone) });
     setBusy(false);
-    if (error) setErr(error.message); else onNext();
+    if (error) setErr(friendlyPhoneError(error.message)); else onNext();
   };
   return (
     <>
@@ -98,12 +99,12 @@ export function OtpStep({ title, phone, onNext, cta = "Verify" }: { title: strin
     setBusy(true); setErr("");
     const { error } = await supabase.auth.verifyOtp({ phone: toE164(phone), token: code.join(""), type: "sms" });
     setBusy(false);
-    if (error) setErr(error.message); else onNext();
+    if (error) setErr(friendlyPhoneError(error.message)); else onNext();
   };
   const resend = async () => {
     setSecs(45); setErr("");
     const { error } = await supabase.auth.signInWithOtp({ phone: toE164(phone) });
-    if (error) setErr(error.message);
+    if (error) setErr(friendlyPhoneError(error.message));
   };
   useEffect(() => {
     if (secs <= 0) return;
