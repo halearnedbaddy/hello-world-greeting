@@ -15,7 +15,7 @@ describe('toE164', () => {
 
 describe('friendlyPhoneError', () => {
   it('explains a disabled phone provider', () => {
-    expect(friendlyPhoneError('Phone provider is disabled')).toBe(
+    expect(friendlyPhoneError('Unsupported phone provider')).toBe(
       "Phone sign-in isn't switched on for this app yet. Please contact the Beez team to enable it.",
     );
   });
