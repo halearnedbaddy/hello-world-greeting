@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
+import { friendlyPhoneError, toE164 } from "@/lib/phone";
+export { toE164 } from "@/lib/phone";
 import { ArrowLeft, ArrowRight, ShieldCheck, Check } from "lucide-react";
 
 export function Shell({ onBack, children, step, total }: { onBack?: (() => void) | undefined; children: ReactNode; step?: number; total?: number }) {
@@ -57,7 +59,6 @@ export function Field({ label, children }: { label: string; children: ReactNode 
 
 export const inputCls = "w-full rounded-xl border border-input bg-card px-4 py-3.5 outline-none focus:border-primary";
 
-export const toE164 = (phone: string) => `+254${phone.replace(/\D/g, "").replace(/^0+/, "").replace(/^254/, "")}`;
 
 export function PhoneStep({ title, desc, phone, setPhone, onNext, cta = "Continue", extra }: {
   title: string; desc: string; phone: string; setPhone: (v: string) => void; onNext: () => void; cta?: string; extra?: ReactNode;
