@@ -280,9 +280,11 @@ function Index() {
               ))}
             </nav>
             <div className="flex justify-center gap-3 md:justify-end">
-              {[["X", "𝕏"], ["Facebook", "f"], ["Instagram", "◎"], ["YouTube", "▶"]].map(([label, g]) => (
+              {([["X", XIcon], ["Facebook", Facebook], ["Instagram", Instagram], ["YouTube", Youtube]] as const).map(([label, Icon]) => (
                 <a key={label} href="#" aria-label={label}
-                  className="grid h-9 w-9 place-items-center rounded-full border text-sm font-bold transition hover:border-primary hover:text-primary">{g}</a>
+                  className="grid h-9 w-9 place-items-center rounded-full border transition hover:border-primary hover:text-primary">
+                  <Icon size={16} />
+                </a>
               ))}
             </div>
           </div>
