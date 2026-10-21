@@ -70,7 +70,7 @@ export function PhoneStep({ title, desc, phone, setPhone, onNext, cta = "Continu
     setBusy(true); setErr("");
     const { error } = await supabase.auth.signInWithOtp({ phone: toE164(phone) });
     setBusy(false);
-    if (error) setErr(error.message); else onNext();
+    if (error) setErr(friendlyPhoneError(error.message)); else onNext();
   };
   return (
     <>
@@ -99,12 +99,12 @@ export function OtpStep({ title, phone, onNext, cta = "Verify" }: { title: strin
     setBusy(true); setErr("");
     const { error } = await supabase.auth.verifyOtp({ phone: toE164(phone), token: code.join(""), type: "sms" });
     setBusy(false);
-    if (error) setErr(error.message); else onNext();
+    if (error) setErr(friendlyPhoneError(error.message)); else onNext();
   };
   const resend = async () => {
     setSecs(45); setErr("");
     const { error } = await supabase.auth.signInWithOtp({ phone: toE164(phone) });
-    if (error) setErr(error.message);
+    if (error) setErr(friendlyPhoneError(error.message));
   };
   useEffect(() => {
     if (secs <= 0) return;
