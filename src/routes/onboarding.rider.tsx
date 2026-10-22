@@ -4,6 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Phone, User, FileText, ThumbsUp, IdCard, Bike, Upload, Check, Smartphone } from "lucide-react";
 import { Shell, Title, PrimaryBtn, Field, inputCls, PhoneStep, OtpStep, DoneStep, toE164 } from "@/components/onboarding";
 import { saveRider } from "@/lib/rider.functions";
+import beezMark from "@/assets/beez-mark.png.asset.json";
 
 export const Route = createFileRoute("/onboarding/rider")({
   head: () => ({
@@ -73,7 +74,7 @@ function RiderOnboarding() {
       {step === 0 && (
         <>
           <div className="mb-8 text-center">
-            <span className="mx-auto grid h-20 w-20 place-items-center rounded-full border-2 border-primary text-4xl">🐝</span>
+            <span className="mx-auto grid h-20 w-20 place-items-center rounded-full border-2 border-primary bg-foreground"><img src={beezMark.url} alt="Beez logo" className="h-14 w-14 object-contain" /></span>
             <h1 className="mt-5 text-3xl font-extrabold">Welcome, Rider!</h1>
             <p className="mt-2 text-muted-foreground">Let's get you set up in a few steps.</p>
           </div>

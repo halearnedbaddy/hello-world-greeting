@@ -4,6 +4,7 @@ import type { Session } from '@supabase/supabase-js';
 import {
   Home, ShoppingBag, Users, Store, Bike, Package, Truck, CreditCard, BarChart3, Headphones, Settings, Search, Bell, LogOut,
 } from 'lucide-react';
+import beezMark from '@/assets/beez-mark.png.asset.json';
 import { supabase } from '@/integrations/supabase/client';
 import { db, useTable, type Ticket } from '@/lib/admin-data';
 import '@/routes/-admin-dashboard.css';
@@ -65,7 +66,7 @@ function AdminLogin() {
   return (
     <div className="ad ad-center">
       <form className="ad-card ad-login" onSubmit={submit}>
-        <div className="ad-logo"><span className="ad-bee">🐝</span>Beez Admin</div>
+        <div className="ad-logo"><span className="ad-bee"><img src={beezMark.url} alt="Beez" className="h-full w-full object-contain p-1" /></span>Beez Admin</div>
         <h1>{mode === 'in' ? 'Sign in' : 'Create admin account'}</h1>
         <label>Email<input className="ad-input" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} /></label>
         <label>Password<input className="ad-input" type="password" required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} /></label>
@@ -88,11 +89,11 @@ function AdminLayout({ email, children }: { email: string; children: ReactNode }
   return (
     <div className="ad">
       <aside className="ad-side">
-        <div className="ad-logo"><span className="ad-bee">🐝</span>Beez</div>
+        <div className="ad-logo"><span className="ad-bee"><img src={beezMark.url} alt="Beez" className="h-full w-full object-contain p-1" /></span>Beez</div>
         <nav>{nav.map(([I, n, to]) => (
           <Link key={n} to={to} activeProps={{ className: 'active' }}><I size={19} /><span>{n}</span></Link>
         ))}</nav>
-        <div className="ad-side-foot"><span className="ad-bee sm">🐝</span><div><b>Beez</b><p>Fast. Safe. Local.</p></div></div>
+        <div className="ad-side-foot"><span className="ad-bee sm"><img src={beezMark.url} alt="Beez" className="h-full w-full object-contain p-1" /></span><div><b>Beez</b><p>Fast. Safe. Local.</p></div></div>
       </aside>
       <div className="ad-main">
         <header className="ad-top">
