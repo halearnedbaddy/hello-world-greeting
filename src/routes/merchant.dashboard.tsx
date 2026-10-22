@@ -9,6 +9,7 @@ import {
   CheckCircle2, Box, Eye, Menu, X, Store, ShieldCheck
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import beezMark from "@/assets/beez-mark.png.asset.json";
 import "./-merchant-dashboard.css";
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
@@ -72,7 +73,7 @@ function App() {
   const currentTitle = active === 'Home' ? 'Home' : active;
   return <div className="beez-md"><div className="app-shell">
     <aside className={`sidebar ${mobileMenu?'open':''}`}>
-      <div className="logo"><div className="bee-mark">🐝</div><span>Bee<span>z</span></span><button className="mobile-close" onClick={()=>setMobileMenu(false)}><X/></button></div>
+      <div className="logo"><div className="bee-mark"><img src={beezMark.url} alt="Beez" className="h-full w-full object-contain p-1.5" /></div><span>Bee<span>z</span></span><button className="mobile-close" onClick={()=>setMobileMenu(false)}><X/></button></div>
       <nav>{nav.map(([Icon,label])=><button key={label} className={`nav-item ${active===label?'active':''}`} onClick={()=>{setActive(label);setMobileMenu(false)}}><Icon size={20}/><span>{label}</span>{label==='Orders'&&pendingCount>0&&<b className="count">{pendingCount}</b>}</button>)}</nav>
       <div className="sidebar-promo">
         <div className="promo-bee">🐝</div><h3>Grow your business<br/>with <em>Beez</em></h3><p>More customers. More sales.<br/>More growth.</p>

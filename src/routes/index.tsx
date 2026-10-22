@@ -16,6 +16,7 @@ import hero from "@/assets/hero-vendor.jpg";
 import vendorMan from "@/assets/vendor-man.jpg";
 import amina from "@/assets/avatar-amina.jpg";
 import peter from "@/assets/avatar-peter.jpg";
+import beezMark from "@/assets/beez-mark.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -67,7 +68,7 @@ function BottomNav() {
 function Logo({ sub }: { sub?: boolean }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-lg">🐝</span>
+      <img src={beezMark.url} alt="Beez logo" className="h-9 w-9 rounded-full bg-foreground object-contain p-1" />
       <div>
         <div className="text-2xl font-extrabold leading-none">Beez</div>
         {sub && <div className="text-xs opacity-80">Voice. Payments. Progress.</div>}
@@ -194,7 +195,7 @@ function Index() {
               <img src={vendorMan} alt="Vendor checking a Beez order" loading="lazy" width={896} height={1024}
                 className="absolute right-0 top-4 h-[320px] w-[70%] rounded-2xl object-cover" />
               <div className="absolute left-0 top-0 w-48 rounded-[2rem] border-4 border-secondary bg-background p-4 text-center shadow-2xl">
-                <div className="text-left text-sm font-bold">🐝 Beez</div>
+                <div className="flex items-center gap-1.5 text-left text-sm font-bold"><img src={beezMark.url} alt="" className="h-5 w-5 rounded-md bg-foreground p-0.5" /> Beez</div>
                 <Mic className="mx-auto mt-4 h-8 w-8 text-primary" />
                 <AudioLines className="mx-auto mt-2 h-8 w-16 text-primary" />
                 <p className="text-xs">Listening...</p>

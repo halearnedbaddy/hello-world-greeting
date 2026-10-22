@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Store, Bike, Check, ArrowRight, Globe, ChevronDown } from "lucide-react";
 import merchant from "@/assets/hero-vendor.jpg";
 import rider from "@/assets/rider.jpg";
+import beezMark from "@/assets/beez-mark.png.asset.json";
 
 export const Route = createFileRoute("/get-started")({
   head: () => ({
@@ -85,7 +86,7 @@ function GetStarted() {
       <div className="mx-auto max-w-5xl px-6 py-6">
         <header className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="grid h-11 w-11 place-items-center rounded-xl bg-foreground text-xl">🐝</span>
+            <span className="grid h-11 w-11 place-items-center rounded-xl bg-foreground"><img src={beezMark.url} alt="Beez logo" className="h-8 w-8 object-contain" /></span>
             <span className="text-3xl font-extrabold">Bee<span className="text-primary">z</span></span>
           </Link>
           <div className="relative">
@@ -144,7 +145,7 @@ function GetStarted() {
         <div className="mt-6 flex items-center justify-center gap-6 text-sm">
           <span className="h-px w-20 bg-border" /> {t.footer} <span className="h-px w-20 bg-border" />
         </div>
-        <div className="mt-2 text-center">🐝</div>
+        <img src={beezMark.url} alt="" className="mt-2 inline-block h-9 w-9 rounded-xl bg-foreground p-1.5" />
       </div>
     </div>
   );

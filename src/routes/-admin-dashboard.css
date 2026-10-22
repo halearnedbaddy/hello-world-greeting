@@ -2,7 +2,7 @@
 .ad *{box-sizing:border-box}.ad h1,.ad h3,.ad p{margin:0}.ad button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
 .ad-side{width:197px;flex-shrink:0;border-right:1px solid var(--bd);background:#06121c;display:flex;flex-direction:column;padding:16px 8px;position:sticky;top:0;height:100vh}
 .ad-logo{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:800;padding:0 14px 22px}
-.ad-bee{width:32px;height:32px;border-radius:9px;background:var(--y);display:grid;place-items:center;font-size:18px}.ad-bee.sm{border-radius:50%;background:#fff}
+.ad-bee{width:32px;height:32px;border-radius:9px;background:#fff;display:grid;place-items:center;font-size:18px}.ad-bee.sm{border-radius:50%;background:#fff}
 .ad-side nav{display:grid;gap:9px}.ad-side nav button{display:flex;align-items:center;gap:13px;padding:8px 14px;border-radius:6px;font-size:13px;text-align:left}
 .ad-side nav button span{flex:1}.ad-side nav button.active{background:var(--y);color:#111;font-weight:600}.ad-chev{opacity:.7}
 .ad-side-foot{margin-top:auto;display:flex;gap:8px;align-items:center;padding:0 10px}.ad-side-foot b{font-size:18px}.ad-side-foot p{color:var(--mut);font-size:11px}
